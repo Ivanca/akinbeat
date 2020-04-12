@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="module" src="main.js"></script>
+    
+    <style>
+        html {
+            font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Sans-Serif;
+        }
+
+        body, html {
+            margin: 0;
+        }
+        .plyr {
+            max-height: 90vh;
+        }
+        #playlist {
+            list-style-type: none;
+            padding: 0;
+            background: white;
+            margin: 0 0;
+            width: 100%;
+            display: inline-block;
+        }
+        #playlist li {
+            color: #2C3238;
+            width: 96%;
+            padding: 15px 2%;
+            margin: 0;
+            text-align: left;
+            border-top: 1px solid #D5DDE4;
+        }
+        #playlist li .duration {
+            float: right;
+            color: #777B7E;
+        }
+
+        textarea:focus, input:focus{
+            outline: none;
+        }
+
+        /* checkbox starts */
+
+        .box_1 {
+            background: #eee;
+        }
+
+        input[type="checkbox"].switch_1{
+            font-size: 30px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 3.5em;
+            height: 1.5em;
+            background: #ddd;
+            border-radius: 3em;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            transition: all .2s ease-in-out;
+        }
+        
+        input[type="checkbox"].switch_1:checked{
+            background: #0ebeff;
+        }
+        
+        input[type="checkbox"].switch_1:after{
+            position: absolute;
+            content: "";
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 .25em rgba(0,0,0,.3);
+            transform: scale(.7);
+            left: 0;
+            transition: all .2s ease-in-out;
+        }
+        
+        input[type="checkbox"].switch_1:checked:after{
+            left: calc(100% - 1.5em);
+        }
+
+        .toggle-option-row {
+            display: flex;
+            align-items: center;
+            flex-direction: row-reverse;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+            transition: color .2s ease-in-out;
+            font-size: 1.3em;
+            color: #cacaca;
+        }
+        input:checked + label {
+            color: #0ebeff;
+        }
+        
+        .toggle-option-row select, .toggle-option-row input {
+            -webkit-appearance: none;
+            border: none;
+            color: inherit;
+            font: inherit;
+            text-decoration-style: dotted;
+            text-decoration-line: underline;
+        }
+
+        .seconds-to-autoplay {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            width: 2.1em;
+            text-align: center;
+            position: relative;
+            background: transparent;
+            margin-right: -11px;
+            border-radius: 40%;
+        }
+
+        .player-opacity-0 .plyr {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+            
+        /* Switch 1 Specific Style End */
+
+    </style>
+</head>
+<body class="player-opacity-0">
+    <div id="container">
+        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
+        <div class="playlist-container">
+            <ol id="playlist">
+                <li>
+                    <div class="toggle-option-row">
+                        <input name="autoplay" id="autoplay" type="checkbox" checked class="switch_1">
+                        <label for="autoplay">Autoplay <input type="number" value="15" min="10" max="60" class="seconds-to-autoplay">
+                            <select id="seconds-or-full">
+                                <option value="seconds">seconds</option>
+                                <option value="full">until end</option>
+                            </select>
+                        </label>
+                    </div>                      
+                </li>
+                <li data-ytid="wA3Mq5R6eiE" class="current">Here Comes the Sun - The Beatles<span class="duration">2:54</span></li>
+                <li data-ytid="8gYJatiODnM">Walking On Sunshine - Katrina and the Waves<span class="duration">3:43</span></li>
+                <li data-ytid="4LsZt6z4_0I">Man of Steel (2013) <span class="duration">2:23:00</span></li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

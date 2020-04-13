@@ -18,6 +18,9 @@ async function youtube(query, page) {
                     // Get video details
                 let $metainfo = $vid.find(".yt-lockup-meta-info li");
                 let $thumbnail = $vid.find(".yt-thumb img");
+                if (!$vid.parent().data("context-item-id")) {
+                    return resolve({'error': 'song not found'})
+                }
                 let video = {
                     "id": $vid.parent().data("context-item-id"),
                     "title": $vid.find(".yt-lockup-title").children().first().text(),

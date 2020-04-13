@@ -35,14 +35,16 @@ def get_similar_artists(artist, ip):
         if data['error'] == 6:
             return {'error': 'ARTIST_NOT_FOUND'}
         return data
-    song = random.choice(data['toptracks']['track'])
-    songs = [song]
+    requested_artist_song = random.choice(data['toptracks']['track'])
+    songs = []
     data = musicfm_request(ip, 'artist.getsimilar', artist=artist, limit=40)
     for artist in data['similarartists']['artist']:
         if 'mbid' in artist:
             tracks_data = musicfm_request(ip, 'artist.gettoptracks', mbid=artist['mbid'], limit=3)
             song = random.choice(tracks_data['toptracks']['track'])
             songs.append(song)
+    # One song of the requested artist at the end, as a treat (only one to play fully)
+    songs.append(requested_artist_song)
     for song in songs:
         song.pop('image', None)
         song.pop('@attr', None)

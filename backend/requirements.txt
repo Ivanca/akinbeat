@@ -1,0 +1,7 @@
+sqlitedict
+Flask
+requests
+flask-cors
+google-api-python-client
+mod-wsgi
+mod_wsgi-httpd 

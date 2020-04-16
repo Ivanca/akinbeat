@@ -1,9 +1,11 @@
 
 from sqlitedict import SqliteDict
 from datetime import date
+from cache import get_cache
+
 
 TOO_MANY_REQUESTS = "TOO_MANY_REQUESTS"
-cache = SqliteDict('./cached/cache.sqlite', autocommit=True)
+cache = get_cache()
 
 def abuse_detected(ip):
     today = date.today().strftime("%d/%m/%Y")

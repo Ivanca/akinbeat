@@ -3,12 +3,13 @@ import json
 from googleapiclient.discovery import build
 from sqlitedict import SqliteDict
 import requests
+from cache import get_cache
 
 from abuse_control import abuse_detected, TOO_MANY_REQUESTS
 
 
 def youtube_search(q, ip):
-    cache = SqliteDict('./cached/cache.sqlite', autocommit=True)
+    cache = get_cache()
 
     cache_key = 'yt-scraper-query: ' + q
     if cache_key in cache:

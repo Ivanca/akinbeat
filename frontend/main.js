@@ -123,7 +123,13 @@ var getData = function() {
     
     $search.closest('form').on('submit', function(event){
         const domain = document.location.host === 'localhost' ? '//localhost:5000' : '//akinbeat.com/api/';
+        $('.step-1').addClass('loading');
         $.get(domain, {artist: $search.val()}, function(data) {
+            $('.step-1').removeClass('loading');
+            if (data === 'ARTIST_NOT_FOUND') {
+                alert("Artist not found :( check spelling or try another!")
+                return;
+            }
             let htmlArray = data.filter(video => video.id).map(video => 
                 `<li data-ytid="${video.id}">${HTMLescape(video.title)}<span class="duration">${video.duration}</span></li>`
             );
@@ -132,6 +138,10 @@ var getData = function() {
             $playlist.append(htmlArray.join(''));
             setYtSource($('#playlist li[data-ytid]').first());
             $('.step-2').removeClass('hidden').get(0).scrollIntoView({ behavior: 'smooth' });
+        })
+        .fail(function() {
+            $('.step-1').removeClass('loading');
+            alert( "Oops something went wrong :(" );
         })
         event.preventDefault();
     })

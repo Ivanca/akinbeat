@@ -210,3 +210,88 @@ li.current {
     overflow: scroll;
     padding-right: 1px;
 }
+
+.loading-message {
+    display: none;
+}
+
+.loading .loading-message {
+    display: block;
+}
+
+.loading .step1-subcontainer {
+    display: none;
+}
+
+/* loader ani */
+  
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    margin-top: -200px;
+    margin-left: -200px;
+    background-color: white;
+    filter: contrast(30);
+    opacity: 0.3;
+  }
+  
+  .blob {
+    position: absolute;
+    left: 180px;
+    top: 180px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #141414;
+    content: "";
+    filter: blur(10px);
+    transform: translateY(-100px);
+  }
+  
+  .blob:nth-child(1) {
+    animation: spin 2.5s infinite ease-in-out;
+    animation-delay: 0.1s;
+  }
+  
+  .blob:nth-child(2) {
+    animation: spin 2.5s infinite ease-in-out;
+    animation-delay: 0.2s;
+  }
+  
+  .blob:nth-child(3) {
+    animation: spin 2.5s infinite ease-in-out;
+    animation-delay: 0.3s;
+  }
+  
+  .blob:nth-child(4) {
+    animation: spin 2.5s infinite ease-in-out;
+    animation-delay: 0.4s;
+  }
+  
+  .blob:nth-child(5) {
+    animation: spin 2.5s infinite ease-in-out;
+    animation-delay: 0.5s;
+  }
+  
+  .blob:nth-child(6) {
+    animation: spin 2.5s infinite ease-in-out;
+    animation-delay: 0.6s;
+  }
+  
+  .blob:nth-child(7) {
+    animation: spin 2.5s infinite ease-in-out;
+    animation-delay: 0.7s;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg) translateY(-100px) rotate(0deg);
+    }
+    70% {
+      transform: rotate(360deg) translateY(-100px) rotate(-360deg);
+    }
+  }
+  

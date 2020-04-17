@@ -122,7 +122,8 @@ var getData = function() {
     let $playlist = $('#playlist');
     
     $search.closest('form').on('submit', function(event){
-        $.get('//localhost:5000', {artist: $search.val()}, function(data) {
+        const domain = document.location.host === 'localhost' ? '//localhost:5000' : '//akinbeat.com/api/';
+        $.get(domain, {artist: $search.val()}, function(data) {
             let htmlArray = data.filter(video => video.id).map(video => 
                 `<li data-ytid="${video.id}">${HTMLescape(video.title)}<span class="duration">${video.duration}</span></li>`
             );

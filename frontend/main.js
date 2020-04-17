@@ -88,6 +88,12 @@ var handleAutoplayUI = function () {
         player.autoplay = $('#autoplay').is(':checked');
     });
 
+    player.on('ended', event => {
+        if ($('#autoplay').is(':checked') && $("#playlist .current").next().length) {
+            $('.plyr-next').trigger('click');
+        }
+    })
+
     player.on('seeking', event => {
         $('#autoplay').prop('checked', false).trigger('change')
     });
@@ -109,6 +115,10 @@ var handleAutoplayUI = function () {
         state.playing = false;
     })
 
+    player.on('end', event => {
+        
+    })
+
     $('#autoplay').on('change', autoPlayChange);
     $('#seconds-or-full').on('change', onChangeCheckbox);
     autoPlayChange()
@@ -128,7 +138,7 @@ var getData = function() {
             $('.step-1').removeClass('loading');
             if (data === 'ARTIST_NOT_FOUND') {
                 alert("Artist not found :( check spelling or try another!")
-                return;
+                return;s
             }
             let htmlArray = data.filter(video => video.id).map(video => 
                 `<li data-ytid="${video.id}">${HTMLescape(video.title)}<span class="duration">${video.duration}</span></li>`

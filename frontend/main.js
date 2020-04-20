@@ -1,6 +1,9 @@
 import Plyr from './plyr.js';
 
 let setYtSource;
+const player = new Plyr('#player', {
+    /* options */
+});
 
 var handleAutoplayUI = function () {
     
@@ -12,9 +15,7 @@ var handleAutoplayUI = function () {
         interval: -1
     }
 
-    const player = new Plyr('#player', {
-        /* options */
-    });
+
 
     setYtSource = function(element) {
         if ($(element).is('.current')) {
@@ -95,7 +96,9 @@ var handleAutoplayUI = function () {
     })
 
     player.on('seeking', event => {
-        $('#autoplay').prop('checked', false).trigger('change')
+        if ($('#autoplay').is(':checked')) {
+            $('#seconds-or-full').val('full').trigger('change');
+        }
     });
 
     $(document).on('click','.plyr-next', function(){
@@ -115,13 +118,17 @@ var handleAutoplayUI = function () {
         state.playing = false;
     })
 
-    player.on('end', event => {
-        
-    })
-
     $('#autoplay').on('change', autoPlayChange);
     $('#seconds-or-full').on('change', onChangeCheckbox);
     autoPlayChange()
+
+    /* select when clicked bs */
+    var focusedElement;
+    $(document).on('focus', '#search', function () {
+        if (focusedElement == this) return; //already focused, return so user can now place cursor at specific point in input.
+        focusedElement = this;
+        setTimeout(function () { focusedElement.select(); }, 100); //select all text in any field on focus for easy re-entry. Delay sightly to allow focus to "stick" before selecting.
+    }).on('blur', 'input', function(){focusedElement = null;})
     
 }
 
@@ -134,19 +141,26 @@ var getData = function() {
     $search.closest('form').on('submit', function(event){
         const domain = document.location.host === 'localhost' ? '//localhost:5000' : '//akinbeat.com/api/';
         $('.step-1').addClass('loading');
+        if ($search.val().trim().toLowerCase() === 'justin bieber') {
+            alert('You have been banned for having such a shitty music taste')
+        }
         $.get(domain, {artist: $search.val()}, function(data) {
             $('.step-1').removeClass('loading');
             if (data === 'ARTIST_NOT_FOUND') {
                 alert("Artist not found :( check spelling or try another!")
-                return;s
+                return;
             }
             let htmlArray = data.filter(video => video.id).map(video => 
-                `<li data-ytid="${video.id}">${HTMLescape(video.title)}<span class="duration">${video.duration}</span></li>`
+                `<li data-ytid="${video.id}">${HTMLescape(video.artist)}<i> - ${HTMLescape(video.title)}</i><span class="duration">${video.duration}</span></li>`
             );
             console.log(data);
-            $playlist.find('li').not(':first').remove()
-            $playlist.append(htmlArray.join(''));
+            $playlist.find('#playlist li[data-ytid]').remove()
+            $playlist.find('#options-row').after(htmlArray.join(''));
             setYtSource($('#playlist li[data-ytid]').first());
+            player.once('ready', event => {
+                player.play();
+            });
+            player.play()
             $('.step-2').removeClass('hidden').get(0).scrollIntoView({ behavior: 'smooth' });
         })
         .fail(function() {

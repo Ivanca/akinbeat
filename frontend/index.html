@@ -31,21 +31,23 @@
                 <label for="search">Show me music artists similar to...</label>
                 <input type="text" name="search" id="search" autofocus placeholder="">
                 <br>
-                <input type="submit" value="Search">
+                <input type="submit" value="Search & Play!">
                 </form>
             </div>
         </div>
         <div class="step step-2 hidden">
-            <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
+            <div class="player-container">
+                <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
+            </div>
             <div class="playlist-container">
                 <ol id="playlist">
                     <li id="options-row">
                         <div class="toggle-option-row">
                             <input name="autoplay" id="autoplay" type="checkbox" checked class="switch_1">
-                            <label for="autoplay">Autoplay <span class="hide-on-full">first</span> <input type="number" value="20" min="10" max="60" class="hide-on-full seconds-to-autoplay">
+                            <label for="autoplay">Autoplay <span class="hide-on-full word-first">first</span> <input type="number" value="20" min="10" max="60" class="hide-on-full seconds-to-autoplay">
                                 <select id="seconds-or-full">
-                                    <option value="seconds">seconds</option>
                                     <option value="full">until end</option>
+                                    <option value="seconds">seconds</option>
                                 </select>
                             </label>
                         </div>                      
@@ -53,6 +55,7 @@
                     <!-- <li data-ytid="wA3Mq5R6eiE" class="current">Here Comes the Sun - The Beatles<span class="duration">2:54</span></li> -->
                     <!-- <li data-ytid="8gYJatiODnM">Walking On Sunshine - Katrina and the Waves<span class="duration">3:43</span></li> -->
                     <!-- <li data-ytid="4LsZt6z4_0I">Man of Steel (2013) <span class="duration">2:23:00</span></li> -->
+                    <li class="credits-row">akinbeat © 2020<br>{ by Ivan Castellanos }</li>
                 </ol>
             </div>
         </div>

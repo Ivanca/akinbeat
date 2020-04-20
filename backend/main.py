@@ -20,7 +20,7 @@ def get_similar_music():
         return jsonify(similar_ones['error'])
 
     # Youtube APi fucking sucks, let use scrapper instead
-    similar_ones = similar_ones[:10]
+    similar_ones = similar_ones[:20]
     videos = []
     songs_not_found = 0
 
@@ -34,7 +34,8 @@ def get_similar_music():
                 continue
             return jsonify(yt_result['error'])
         # Dont use actual youtube title, is full of noise (e.g "[ Official video ]")
-        yt_result['title'] = query
+        yt_result['title'] = song['name']
+        yt_result['artist'] = song['artist']['name']
         videos.append(yt_result)
 
     return jsonify(videos)

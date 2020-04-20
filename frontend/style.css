@@ -51,6 +51,8 @@ input#search {
     border: 1px solid #0ebeff;
     color: #0ebeff;
     padding: 10px;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 #playlist {
@@ -88,7 +90,7 @@ textarea:focus, input:focus{
     background: #eee;
 }
 
-input[type="checkbox"].switch_1{
+input[type="checkbox"].switch_1 {
     font-size: 30px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -162,6 +164,19 @@ input:checked + label {
     border-radius: 40%;
 }
 
+#playlist li.credits-row {
+    font-size: 10px;
+    text-align: center;
+    color: #BBB;
+    padding-top: 2.6em;
+    font-family: monospace;
+}
+
+#playlist li i {
+    color: #CCC;
+    font-style: normal;
+}
+
 li.current {
     background: #f1f0f0;
 }
@@ -185,7 +200,7 @@ li.current {
     justify-content: stretch;
 }
 
-.plyr {
+.player-container {
     flex-grow: 0.9;
 }
 
@@ -221,6 +236,41 @@ li.current {
 
 .loading .step1-subcontainer {
     display: none;
+}
+
+li#options-row {
+    display: block;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+    border-bottom: 1px solid #D5DDE4;
+}
+/* .plyr__poster {
+    z-index: -1;
+} */
+
+/* mobile responsive shit */
+
+@media (max-width:600px), (max-aspect-ratio: 5/4) { 
+    /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+    .step.step-2 {
+        background: black;
+        display: flex;
+        justify-content: stretch;
+        flex-direction: column;
+    }
+    .playlist-container {
+        max-height: none;
+    }
+
+    .word-first {
+        display: none !important;
+    }
+
+    input[type="checkbox"].switch_1 {
+        width: 2.5em;
+    }
 }
 
 /* loader ani */
@@ -294,4 +344,4 @@ li.current {
       transform: rotate(360deg) translateY(-100px) rotate(-360deg);
     }
   }
-  
+

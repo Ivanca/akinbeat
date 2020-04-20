@@ -156,7 +156,7 @@ var getData = function() {
                 `<li data-ytid="${video.id}">${HTMLescape(video.artist)}<i> - ${HTMLescape(video.title)}</i><span class="duration">${video.duration}</span></li>`
             );
             console.log(data);
-            $playlist.find('#playlist li[data-ytid]').remove()
+            $playlist.find('li[data-ytid]').remove()
             $playlist.find('#options-row').after(htmlArray.join(''));
             setYtSource($('#playlist li[data-ytid]').first());
             $('.step-2').removeClass('hidden').get(0).scrollIntoView({ behavior: 'smooth' });

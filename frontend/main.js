@@ -86,7 +86,6 @@ var handleAutoplayUI = function () {
     player.on('playing', event => {
         state.playing = true;
         autoPlayChange();
-        player.autoplay = $('#autoplay').is(':checked');
     });
 
     player.on('ended', event => {
@@ -111,6 +110,9 @@ var handleAutoplayUI = function () {
         if ($('.plyr-next').length === 0) {
             let nextSongBtn = '<button type="button" class="plyr-next plyr__controls__item plyr__control"><i class="fa fa-step-forward fa-lg"></i></button>';
             $('.plyr__controls__item').first().after(nextSongBtn);
+        }
+        if ($('#autoplay').is(':checked') && $('.current').length) {
+            player.play()
         }
     });
     
@@ -157,10 +159,6 @@ var getData = function() {
             $playlist.find('#playlist li[data-ytid]').remove()
             $playlist.find('#options-row').after(htmlArray.join(''));
             setYtSource($('#playlist li[data-ytid]').first());
-            player.once('ready', event => {
-                player.play();
-            });
-            player.play()
             $('.step-2').removeClass('hidden').get(0).scrollIntoView({ behavior: 'smooth' });
         })
         .fail(function() {

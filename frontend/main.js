@@ -3,6 +3,7 @@ import Plyr from './plyr.js';
 let setYtSource;
 const player = new Plyr('#player', {
     /* options */
+    autoplay: true
 });
 
 var handleAutoplayUI = function () {
@@ -15,8 +16,6 @@ var handleAutoplayUI = function () {
         interval: -1
     }
 
-
-
     setYtSource = function(element) {
         if ($(element).is('.current')) {
             return;
@@ -24,15 +23,17 @@ var handleAutoplayUI = function () {
         let ytid = $(element).data('ytid');
         $('.current').removeClass('current');
         $(element).addClass('current');
-        player.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: ytid,
-                    provider: 'youtube',
-                },
-            ],
-        };
+        /* plyr sucks, destroys <iframe> on .source set which ruins autoplay, workaround */
+        // player.source = {
+        //     type: 'video',
+        //     sources: [
+        //         {
+        //             src: ytid,
+        //             provider: 'youtube',
+        //         },
+        //     ],
+        // };
+        player.embed.loadVideoById(ytid)
     }
 
     function startInterval() {
@@ -63,6 +64,8 @@ var handleAutoplayUI = function () {
     }
 
     let autoPlayChange = function(){
+        player.autoplay = $('#autoplay').is(':checked');
+        
         if ($('#autoplay').is(':checked')) {
             // init
             onChangeCheckbox()
@@ -112,7 +115,11 @@ var handleAutoplayUI = function () {
             $('.plyr__controls__item').first().after(nextSongBtn);
         }
         if ($('#autoplay').is(':checked') && $('.current').length) {
-            player.play()
+            setTimeout(function() {
+                document.title = Date.now().toString().slice(-5)
+                player.play()
+            }, 100)
+            
         }
     });
     
@@ -122,6 +129,12 @@ var handleAutoplayUI = function () {
 
     $('#autoplay').on('change', autoPlayChange);
     $('#seconds-or-full').on('change', onChangeCheckbox);
+    
+    player.once('playing', function() {
+        // First video is just a placeholder we don't want to actually play
+        player.pause()
+    })
+
     autoPlayChange()
 
     /* select when clicked bs */

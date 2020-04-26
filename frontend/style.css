@@ -2,7 +2,8 @@ html {
     font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Sans-Serif;
 }
 
-body, html {
+body,
+html {
     margin: 0;
 }
 
@@ -15,16 +16,16 @@ body, html {
 }
 
 .step.step-1 {
-    display: flex;
-    align-items: center;
+    display        : flex;
+    align-items    : center;
     justify-content: center;
-    text-align: center;
+    text-align     : center;
 }
 
 .step.step-1 label {
-    color: #0ebeff;
+    color     : #0ebeff;
     text-align: center;
-    display: block;
+    display   : block;
 }
 
 .step.step-2.hidden {
@@ -32,55 +33,59 @@ body, html {
 }
 
 .step-1 input[type="submit"] {
-    color: inherit;
-    background: inherit;
-    border: inherit;
-    color: inherit;
-    font: inherit;
-    font-size: 1.2em;
-    background: #0ebeff;
-    color: white;
+    color        : inherit;
+    background   : inherit;
+    border       : inherit;
+    color        : inherit;
+    font         : inherit;
+    font-size    : 1.2em;
+    background   : #0ebeff;
+    color        : white;
     border-radius: 50px;
-    padding: 7px 20px;
-    margin-top: 10px;
+    padding      : 7px 20px;
+    margin-top   : 10px;
 }
 
 input#search {
-    font-size: 2em;
+    font-size    : 2em;
     border-radius: 7px;
-    border: 1px solid #0ebeff;
-    color: #0ebeff;
-    padding: 10px;
-    max-width: 100vw;
-    box-sizing: border-box;
+    border       : 1px solid #0ebeff;
+    color        : #0ebeff;
+    padding      : 10px;
+    max-width    : 100vw;
+    box-sizing   : border-box;
 }
 
 #playlist {
     list-style-type: none;
-    padding: 0;
-    background: white;
-    margin: 0 0;
-    width: 100%;
-    display: inline-block;
+    padding        : 0;
+    background     : white;
+    margin         : 0 0;
+    width          : 100%;
+    display        : inline-block;
 }
+
 #playlist li {
-    color: #2C3238;
-    width: 96%;
-    padding: 15px 2%;
-    margin: 0;
+    color     : #2C3238;
+    width     : 96%;
+    padding   : 15px 2%;
+    margin    : 0;
     text-align: left;
     border-top: 1px solid #D5DDE4;
-    cursor: pointer;
+    cursor    : pointer;
 }
+
 #playlist li.current {
     cursor: default;
 }
+
 #playlist li .duration {
     float: right;
     color: #777B7E;
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
     outline: none;
 }
 
@@ -91,89 +96,91 @@ textarea:focus, input:focus{
 }
 
 input[type="checkbox"].switch_1 {
-    font-size: 30px;
+    font-size         : 30px;
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 3.5em;
-    height: 1.5em;
-    background: #ddd;
-    border-radius: 3em;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    transition: all .2s ease-in-out;
+    -moz-appearance   : none;
+    appearance        : none;
+    width             : 3.5em;
+    height            : 1.5em;
+    background        : #ddd;
+    border-radius     : 3em;
+    position          : relative;
+    cursor            : pointer;
+    outline           : none;
+    transition        : all .2s ease-in-out;
 }
 
-input[type="checkbox"].switch_1:checked{
+input[type="checkbox"].switch_1:checked {
     background: #0ebeff;
 }
 
-input[type="checkbox"].switch_1:after{
-    position: absolute;
-    content: "";
-    width: 1.5em;
-    height: 1.5em;
+input[type="checkbox"].switch_1:after {
+    position     : absolute;
+    content      : "";
+    width        : 1.5em;
+    height       : 1.5em;
     border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 0 .25em rgba(0,0,0,.3);
-    transform: scale(.7);
-    left: 0;
-    transition: all .2s ease-in-out;
+    background   : #fff;
+    box-shadow   : 0 0 .25em rgba(0, 0, 0, .3);
+    transform    : scale(.7);
+    left         : 0;
+    transition   : all .2s ease-in-out;
 }
 
-input[type="checkbox"].switch_1:checked:after{
+input[type="checkbox"].switch_1:checked:after {
     left: calc(100% - 1.5em);
 }
 
 .toggle-option-row {
-    display: flex;
-    align-items: center;
+    display       : flex;
+    align-items   : center;
     flex-direction: row-reverse;
 }
 
 label {
-    font-weight: bold;
+    font-weight : bold;
     margin-right: 10px;
-    transition: color .2s ease-in-out;
-    font-size: 1.3em;
-    color: #cacaca;
+    transition  : color .2s ease-in-out;
+    font-size   : 1.3em;
+    color       : #cacaca;
 }
-input:checked + label {
+
+input:checked+label {
     color: #0ebeff;
 }
 
-.toggle-option-row select, .toggle-option-row input {
-    -webkit-appearance: none;
-    border: none;
-    color: inherit;
-    font: inherit;
+.toggle-option-row select,
+.toggle-option-row input {
+    -webkit-appearance   : none;
+    border               : none;
+    color                : inherit;
+    font                 : inherit;
     text-decoration-style: dotted;
-    text-decoration-line: underline;
+    text-decoration-line : underline;
 }
 
 .seconds-to-autoplay {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    width: 2.1em;
-    text-align: center;
-    position: relative;
-    background: transparent;
-    margin-right: -11px;
+    display      : inline-block;
+    margin       : 0;
+    padding      : 0;
+    width        : 2.1em;
+    text-align   : center;
+    position     : relative;
+    background   : transparent;
+    margin-right : -11px;
     border-radius: 40%;
 }
 
 #playlist li.credits-row {
-    font-size: 10px;
-    text-align: center;
-    color: #BBB;
+    font-size  : 10px;
+    text-align : center;
+    color      : #BBB;
     padding-top: 2.6em;
     font-family: monospace;
 }
 
 #playlist li i {
-    color: #CCC;
+    color     : #CCC;
     font-style: normal;
 }
 
@@ -182,7 +189,7 @@ li.current {
 }
 
 .plyr__controls button.plyr__controls__item.plyr-next {
-    min-width: 32px;
+    min-width  : 32px;
     margin-left: 8px !important;
 }
 
@@ -192,11 +199,11 @@ li.current {
 
 .plyr.plyr--paused iframe {
     filter: blur(1.5rem);
-} 
+}
 
 .step.step-2 {
-    background: black;
-    display: flex;
+    background     : black;
+    display        : flex;
     justify-content: stretch;
 }
 
@@ -209,20 +216,20 @@ li.current {
 }
 
 .playlist-container::-webkit-scrollbar-track {
-    background:#ffffff;
-    border-radius:0px;
+    background   : #ffffff;
+    border-radius: 0px;
 }
 
-.playlist-container::-webkit-scrollbar-thumb{
-    background: #ccdade;
+.playlist-container::-webkit-scrollbar-thumb {
+    background   : #ccdade;
     border-radius: 7px;
 }
 
 .playlist-container {
-    flex-grow: 0.1;
-    background: white;
-    max-height: 100vh;
-    overflow: scroll;
+    flex-grow    : 0.1;
+    background   : white;
+    max-height   : 100vh;
+    overflow     : scroll;
     padding-right: 1px;
 }
 
@@ -239,27 +246,31 @@ li.current {
 }
 
 li#options-row {
-    display: block;
-    position: sticky;
-    top: 0;
-    background: white;
-    z-index: 1;
+    display      : block;
+    position     : sticky;
+    top          : 0;
+    background   : white;
+    z-index      : 1;
     border-bottom: 1px solid #D5DDE4;
 }
-/* .plyr__poster {
-    z-index: -1;
-} */
+
+.plyr__poster {
+    opacity: 0 !important;
+}
 
 /* mobile responsive shit */
 
-@media (max-width:600px), (max-aspect-ratio: 5/4) { 
+@media (max-width:600px),
+(max-aspect-ratio: 5/4) {
+
     /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
     .step.step-2 {
-        background: black;
-        display: flex;
+        background     : black;
+        display        : flex;
         justify-content: stretch;
-        flex-direction: column;
+        flex-direction : column;
     }
+
     .playlist-container {
         max-height: none;
     }
@@ -274,74 +285,74 @@ li#options-row {
 }
 
 /* loader ani */
-  
-  .loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    height: 400px;
-    margin-top: -200px;
-    margin-left: -200px;
-    background-color: white;
-    filter: contrast(30);
-    opacity: 0.3;
-  }
-  
-  .blob {
-    position: absolute;
-    left: 180px;
-    top: 180px;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    background-color: #141414;
-    content: "";
-    filter: blur(10px);
-    transform: translateY(-100px);
-  }
-  
-  .blob:nth-child(1) {
-    animation: spin 2.5s infinite ease-in-out;
-    animation-delay: 0.1s;
-  }
-  
-  .blob:nth-child(2) {
-    animation: spin 2.5s infinite ease-in-out;
-    animation-delay: 0.2s;
-  }
-  
-  .blob:nth-child(3) {
-    animation: spin 2.5s infinite ease-in-out;
-    animation-delay: 0.3s;
-  }
-  
-  .blob:nth-child(4) {
-    animation: spin 2.5s infinite ease-in-out;
-    animation-delay: 0.4s;
-  }
-  
-  .blob:nth-child(5) {
-    animation: spin 2.5s infinite ease-in-out;
-    animation-delay: 0.5s;
-  }
-  
-  .blob:nth-child(6) {
-    animation: spin 2.5s infinite ease-in-out;
-    animation-delay: 0.6s;
-  }
-  
-  .blob:nth-child(7) {
-    animation: spin 2.5s infinite ease-in-out;
-    animation-delay: 0.7s;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg) translateY(-100px) rotate(0deg);
-    }
-    70% {
-      transform: rotate(360deg) translateY(-100px) rotate(-360deg);
-    }
-  }
 
+.loader {
+    position        : absolute;
+    top             : 50%;
+    left            : 50%;
+    width           : 400px;
+    height          : 400px;
+    margin-top      : -200px;
+    margin-left     : -200px;
+    background-color: white;
+    filter          : contrast(30);
+    opacity         : 0.3;
+}
+
+.blob {
+    position        : absolute;
+    left            : 180px;
+    top             : 180px;
+    width           : 30px;
+    height          : 30px;
+    border-radius   : 15px;
+    background-color: #141414;
+    content         : "";
+    filter          : blur(10px);
+    transform       : translateY(-100px);
+}
+
+.blob:nth-child(1) {
+    animation      : spin 2.5s infinite ease-in-out;
+    animation-delay: 0.1s;
+}
+
+.blob:nth-child(2) {
+    animation      : spin 2.5s infinite ease-in-out;
+    animation-delay: 0.2s;
+}
+
+.blob:nth-child(3) {
+    animation      : spin 2.5s infinite ease-in-out;
+    animation-delay: 0.3s;
+}
+
+.blob:nth-child(4) {
+    animation      : spin 2.5s infinite ease-in-out;
+    animation-delay: 0.4s;
+}
+
+.blob:nth-child(5) {
+    animation      : spin 2.5s infinite ease-in-out;
+    animation-delay: 0.5s;
+}
+
+.blob:nth-child(6) {
+    animation      : spin 2.5s infinite ease-in-out;
+    animation-delay: 0.6s;
+}
+
+.blob:nth-child(7) {
+    animation      : spin 2.5s infinite ease-in-out;
+    animation-delay: 0.7s;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) translateY(-100px) rotate(0deg);
+    }
+
+    70% {
+        transform: rotate(360deg) translateY(-100px) rotate(-360deg);
+    }
+}

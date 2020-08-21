@@ -1,5 +1,6 @@
 
 import json
+import os
 from googleapiclient.discovery import build
 from sqlitedict import SqliteDict
 import requests
@@ -35,7 +36,7 @@ def youtube_search_using_api(q, ip):
     #   https://cloud.google.com/console
     # Please ensure that you have enabled the YouTube Data API for your project.
 
-    DEVELOPER_KEY = 'AIzaSyB1Kd1Yuy3eH7_D1hF_5V4oxHthx0Ptnjs'
+    DEVELOPER_KEY = os.environ['YT_DEVELOPER_KEY']
     YOUTUBE_API_SERVICE_NAME = 'youtube'
     YOUTUBE_API_VERSION = 'v3'
     cache = SqliteDict('./cached/cache.sqlite', autocommit=True)

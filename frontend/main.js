@@ -23,16 +23,8 @@ var handleAutoplayUI = function () {
         let ytid = $(element).data('ytid');
         $('.current').removeClass('current');
         $(element).addClass('current');
-        /* plyr sucks, destroys <iframe> on .source set which ruins autoplay, workaround */
-        // player.source = {
-        //     type: 'video',
-        //     sources: [
-        //         {
-        //             src: ytid,
-        //             provider: 'youtube',
-        //         },
-        //     ],
-        // };
+        // avoid plyr method because it destroys <iframe> on .source set
+        // which ruins autoplay, this is a workaround using YT api directly
         player.embed.loadVideoById(ytid)
     }
 

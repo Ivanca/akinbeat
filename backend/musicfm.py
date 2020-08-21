@@ -1,11 +1,12 @@
 import json
 import random
+import os
 from urllib.request import urlopen
 from sqlitedict import SqliteDict
 from abuse_control import abuse_detected, TOO_MANY_REQUESTS
 from cache import get_cache
 
-API_KEY = '0f77edb2b53cbab1b812a1d3f9469a30'
+API_KEY = os.environ['FM_API_KEY']
 cache = get_cache()
 
 def musicfm_request(ip, method, artist="", mbid="", limit=""):
